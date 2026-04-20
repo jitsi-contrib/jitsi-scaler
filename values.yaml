@@ -1,0 +1,132 @@
+# ------------------------------------------------------------------------------
+# GLOBAL CONFIGURATION ANCHOR
+# ------------------------------------------------------------------------------
+# This master template ensures all shards share the same base settings.
+.jitsiDefaults: &jitsiDefaults
+  publicURL: ""
+  turnHost: ""
+  tz: "UTC"
+
+  websockets:
+    colibri:
+      enabled: false
+    xmpp:
+      enabled: true
+
+  web:
+    gateway:
+      enabled: false
+    ingress:
+      enabled: false
+
+  jvb:
+    replicaCount: 2
+    portRangeSize: 1
+
+    useHostPort: true
+    UDPPort: 10000
+    service:
+      enabled: false
+
+  octo:
+    enabled: true
+
+# ------------------------------------------------------------------------------
+# SHARD CONFIGURATION
+# ------------------------------------------------------------------------------
+# Toggle shards 'true' to deploy capacity.
+# Each enabled shard will deploy a full Jitsi Meet stack.
+shards:
+  shard0:
+    enabled: true
+    jitsi-meet:
+      <<: *jitsiDefaults
+
+      # Exceptions for Shard0
+      web:
+        replicaCount: 1
+
+      # Enable auxiliary services
+      coturn:
+        enabled: false
+      excalidraw:
+        enabled: false
+      etherpad:
+        enabled: false
+
+  shard1:
+    enabled: true
+    jitsi-meet: *jitsiDefaults
+
+  shard2:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard3:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard4:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard5:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard6:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard7:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard8:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+  shard9:
+    enabled: false
+    jitsi-meet: *jitsiDefaults
+
+# ------------------------------------------------------------------------------
+# SCALER (HAPROXY) CONFIGURATION
+# ------------------------------------------------------------------------------
+# This is the entry point for all users. It handles room-based sticky routing.
+scaler:
+  enabled: true
+  replicaCount: 2
+
+  image:
+    repository: haproxy
+    tag: "3.2-alpine"
+    pullPolicy: IfNotPresent
+
+  service:
+    type: ClusterIP
+    port: 80
+    annotations: {}
+
+  gateway:
+    enabled: false
+    gatewayClassName: envoy-gateway-class
+    annotations: {}
+    host: "jitsi.local"
+    paths:
+      - "/"
+    tls:
+      enabled: false
+      secretName: jitsi-web-tls
+
+  ingress:
+    enabled: false
+    ingressClassName: nginx
+    annotations: {}
+    hosts:
+      - host: "jitsi.local"
+        paths:
+          - path: "/"
+    tls:
+      enabled: false
+      secretName: jitsi-web-tls
