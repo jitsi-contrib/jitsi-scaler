@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+  labels:
+    {{- include "jitsi-scaler.haproxy.labels" . | nindent 4 }}
+data:
+  haproxy.cfg: |
+    global
+        log stdout format raw local0
+        maxconn 4096
+
+    defaults
+        log global
+        mode http
+        option httplog
+        timeout connect 5s
+        timeout client  50s
+        timeout server  50s
+        # Websockets idle period
+        timeout tunnel 1h
+
+    frontend jitsi-frontend
+        bind *:80
+
+        # Room-based stickiness table
+        stick-table type string len 64 size 100k expire 30m
+        stick on path,field(1,/)
+
+        # Shard0 routing for auxiliary services
+        acl is__aux_service path_beg /etherpad /excalidraw
+        use_backend shard0_backend if is_aux_service
+
+        # Default distribution across all enabled shards
+        default_backend jitsi_shard_pool
+
+    # Load balanced pool for all enabled shards
+    backend jitsi_shard_pool
+        balance roundrobin
+        stick-table type string len 64 size 100k expire 30m
+        stick on path,field(1,/)
+
+        {{- range $name, $shard := .Values.shards }}
+        {{- if $shard.enabled }}
+        server {{ $name }} {{ $.Release.Name }}-{{ $name }}-web:80 check
+        {{- end }}
+        {{- end }}
+
+    # Dedicated backend for Shard0 auxiliary services
+    backend shard0_backend
+        server shard0 {{ .Release.Name }}-shard0-web:80 check
