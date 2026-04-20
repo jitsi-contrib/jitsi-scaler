@@ -26,6 +26,8 @@ Thumbs.db
 *~
 
 # Project specific
+charts/
+Chart.lock
 docs/
 *.tgz
 *.tgz.prov
