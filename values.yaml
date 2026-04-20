@@ -91,10 +91,10 @@ shards:
     jitsi-meet: *jitsiDefaults
 
 # ------------------------------------------------------------------------------
-# SCALER (HAPROXY) CONFIGURATION
+# HAPROXY CONFIGURATION
 # ------------------------------------------------------------------------------
 # This is the entry point for all users. It handles room-based sticky routing.
-scaler:
+haproxy:
   enabled: true
   replicaCount: 2
 
