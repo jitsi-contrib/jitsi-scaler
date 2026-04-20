@@ -1,0 +1,81 @@
+apiVersion: v2
+name: jitsi-scaler
+type: application
+description: Horizontal scaling and high availability for Jitsi Meet
+icon: https://jitsi-contrib.github.io/jitsi-helm/jitsi-meet.png
+
+# This is the *chart* version.
+# This version number should be incremented each time you make
+# changes to the chart and its templates, including the app version.
+version: 1.0.0
+
+# This is the *jitsi-helm* version.
+appVersion: "2.16.0"
+
+# Helm requires a unique alias for each instance of a subchart.
+# We repeat the dependency pattern below to support up to 10 shards.
+# All shards are pinned to the version matching 'appVersion' for stability.
+dependencies:
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard0
+    condition: shards.shard0.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard1
+    condition: shards.shard1.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard2
+    condition: shards.shard2.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard3
+    condition: shards.shard3.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard4
+    condition: shards.shard4.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard5
+    condition: shards.shard5.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard6
+    condition: shards.shard6.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard7
+    condition: shards.shard7.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard8
+    condition: shards.shard8.enabled
+  - name: jitsi-meet
+    repository: "https://jitsi-contrib.github.io/jitsi-helm/"
+    version: "2.16.0"
+    alias: shard9
+    condition: shards.shard9.enabled
+
+# Chart annotations for ArtifactHub
+annotations:
+  artifacthub.io/category: streaming-messaging
+  artifacthub.io/links: |
+    - name: Jitsi-Scaler GitHub
+      url: https://github.com/jitsi-contrib/jitsi-scaler
+    - name: Jitsi Meet
+      url: https://jitsi.org/jitsi-meet/
+    - name: Jitsi Meet Documentation
+      url: https://jitsi.github.io/handbook/docs/intro/
+    - name: Jitsi-Helm GitHub
+      url: https://github.com/jitsi-contrib/jitsi-helm
