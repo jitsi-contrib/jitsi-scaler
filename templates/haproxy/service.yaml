@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+  labels:
+    {{- include "jitsi-scaler.haproxy.labels" . | nindent 4 }}
+  {{- with .Values.haproxy.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.haproxy.service.type }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.haproxy.service.port }}
+  selector:
+    {{- include "jitsi-scaler.haproxy.selectorLabels" . | nindent 4 }}
