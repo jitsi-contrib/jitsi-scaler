@@ -1,4 +1,7 @@
-{{- if .Values.haproxy.gateway.enabled -}}
+{{- if and
+       .Values.haproxy.enabled
+       .Values.haproxy.gateway.enabled
+-}}
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:

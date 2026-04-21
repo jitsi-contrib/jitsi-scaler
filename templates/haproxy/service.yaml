@@ -1,3 +1,4 @@
+{{- if .Values.haproxy.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -16,3 +17,4 @@ spec:
       port: {{ .Values.haproxy.service.port }}
   selector:
     {{- include "jitsi-scaler.haproxy.selectorLabels" . | nindent 4 }}
+{{- end }}
