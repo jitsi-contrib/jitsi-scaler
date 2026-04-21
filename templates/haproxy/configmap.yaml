@@ -49,3 +49,9 @@ data:
     # Dedicated backend for Shard0 auxiliary services
     backend shard0_backend
         server shard0 {{ .Release.Name }}-shard0-web:80 check
+
+  {{- range $key, $value := .Values.haproxy.extraEnvs }}
+  {{-   if not (kindIs "invalid" $value) }}
+  {{      $key }}: {{ tpl $value $ | quote }}
+  {{-   end }}
+  {{- end }}
