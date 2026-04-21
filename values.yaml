@@ -149,9 +149,27 @@ haproxy:
       enabled: false
       secretName: jitsi-web-tls
 
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 80
+
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 80
+
+  affinity: {}
   annotations: {}
+  extraEnvs: {}
+  extraVolumes: []
+  extraVolumeMounts: []
   hostAliases: []
   labels: {}
+  nodeSelector: {}
+  resources: {}
+  podAnnotations: {}
   podLabels: {}
   podSecurityContext: {}
   securityContext: {}
+  tolerations: []
