@@ -20,6 +20,9 @@ serviceAccount:
 # DEFAULT JITSI CONFIGURATION
 #
 # This master template ensures all Jitsi shards share the same base settings.
+#
+# See values.yaml in jitsi-helm for possible values:
+#   https://github.com/jitsi-contrib/jitsi-helm/blob/main/values.yaml
 # ------------------------------------------------------------------------------
 .jitsiDefaults: &jitsiDefaults
   publicURL: ""
