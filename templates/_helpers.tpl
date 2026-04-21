@@ -41,3 +41,12 @@ app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
 app.kubernetes.io/name: {{ include "jitsi-scaler.name" . | quote }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
 {{- end -}}
+
+{{/* Create the name of the service account to use */}}
+{{- define "jitsi-scaler.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+{{-   .Values.serviceAccount.name | default (include "jitsi-scaler.fullname" .) -}}
+{{- else -}}
+{{-   .Values.serviceAccount.name | default "default" -}}
+{{- end -}}
+{{- end -}}
