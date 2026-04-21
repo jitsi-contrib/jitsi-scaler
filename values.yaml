@@ -1,5 +1,23 @@
 # ------------------------------------------------------------------------------
-# GLOBAL JITSI CONFIGURATION
+# GLOBAL CONFIGURATION
+# ------------------------------------------------------------------------------
+global:
+  clusterDomain: cluster.local
+  podLabels: {}
+  podAnnotations: {}
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname
+  # template.
+  name:
+
+# ------------------------------------------------------------------------------
+# DEFAULT JITSI CONFIGURATION
 #
 # This master template ensures all Jitsi shards share the same base settings.
 # ------------------------------------------------------------------------------
@@ -35,8 +53,10 @@
 # ------------------------------------------------------------------------------
 # SHARD CONFIGURATION
 #
-# Toggle shards 'true' to deploy capacity.
-# Each enabled shard will deploy a full Jitsi stack.
+# - Toggle shards 'true' to deploy capacity.
+# - Each enabled shard will deploy a full Jitsi stack.
+# - Shard0 contains also auxiliary services if they are enabled unlike the other
+#   shards.
 # ------------------------------------------------------------------------------
 shard0:
   enabled: true
@@ -99,6 +119,7 @@ haproxy:
     repository: haproxy
     tag: "3.2-alpine"
     pullPolicy: IfNotPresent
+    pullSecrets: []
 
   service:
     type: ClusterIP
@@ -127,3 +148,10 @@ haproxy:
     tls:
       enabled: false
       secretName: jitsi-web-tls
+
+  annotations: {}
+  hostAliases: []
+  labels: {}
+  podLabels: {}
+  podSecurityContext: {}
+  securityContext: {}
