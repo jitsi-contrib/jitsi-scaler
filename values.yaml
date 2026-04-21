@@ -1,7 +1,8 @@
 # ------------------------------------------------------------------------------
-# GLOBAL CONFIGURATION ANCHOR
+# GLOBAL JITSI CONFIGURATION
+#
+# This master template ensures all Jitsi shards share the same base settings.
 # ------------------------------------------------------------------------------
-# This master template ensures all shards share the same base settings.
 .jitsiDefaults: &jitsiDefaults
   publicURL: ""
   turnHost: ""
@@ -33,67 +34,63 @@
 
 # ------------------------------------------------------------------------------
 # SHARD CONFIGURATION
-# ------------------------------------------------------------------------------
+#
 # Toggle shards 'true' to deploy capacity.
-# Each enabled shard will deploy a full Jitsi Meet stack.
-shards:
-  shard0:
-    enabled: true
-    jitsi-meet:
-      <<: *jitsiDefaults
+# Each enabled shard will deploy a full Jitsi stack.
+# ------------------------------------------------------------------------------
+shard0:
+  enabled: true
+  <<: *jitsiDefaults
 
-      # Exceptions for Shard0
-      web:
-        replicaCount: 1
-
-      # Enable auxiliary services
-      coturn:
-        enabled: false
-      excalidraw:
-        enabled: false
-      etherpad:
-        enabled: false
-
-  shard1:
-    enabled: true
-    jitsi-meet: *jitsiDefaults
-
-  shard2:
+  # Auxiliary services
+  coturn:
     enabled: false
-    jitsi-meet: *jitsiDefaults
-
-  shard3:
+  excalidraw:
     enabled: false
-    jitsi-meet: *jitsiDefaults
-
-  shard4:
+  etherpad:
     enabled: false
-    jitsi-meet: *jitsiDefaults
 
-  shard5:
-    enabled: false
-    jitsi-meet: *jitsiDefaults
+shard1:
+  enabled: true
+  <<: *jitsiDefaults
 
-  shard6:
-    enabled: false
-    jitsi-meet: *jitsiDefaults
+shard2:
+  enabled: false
+  <<: *jitsiDefaults
 
-  shard7:
-    enabled: false
-    jitsi-meet: *jitsiDefaults
+shard3:
+  enabled: false
+  <<: *jitsiDefaults
 
-  shard8:
-    enabled: false
-    jitsi-meet: *jitsiDefaults
+shard4:
+  enabled: false
+  <<: *jitsiDefaults
 
-  shard9:
-    enabled: false
-    jitsi-meet: *jitsiDefaults
+shard5:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard6:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard7:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard8:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard9:
+  enabled: false
+  <<: *jitsiDefaults
 
 # ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
-# ------------------------------------------------------------------------------
+#
 # This is the entry point for all users. It handles room-based sticky routing.
+# ------------------------------------------------------------------------------
 haproxy:
   enabled: true
   replicaCount: 2
