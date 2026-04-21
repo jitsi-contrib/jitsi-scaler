@@ -1,0 +1,36 @@
+{{- if .Values.haproxy.gateway.enabled -}}
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+  labels:
+    {{- include "jitsi-scaler.haproxy.labels" . | nindent 4 }}
+  {{- with .Values.haproxy.gateway.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  gatewayClassName: {{ .Values.haproxy.gateway.gatewayClassName | quote }}
+  listeners:
+    {{- if .Values.haproxy.gateway.tls.enabled }}
+    - name: https
+      port: 443
+      protocol: HTTPS
+      hostname: {{ .Values.haproxy.gateway.host | quote }}
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: {{ .Values.haproxy.gateway.tls.secretName | quote }}
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: Same
+    {{- end }}
+    - name: http
+      port: 80
+      protocol: HTTP
+      hostname: {{ .Values.haproxy.gateway.host | quote }}
+      allowedRoutes:
+        namespaces:
+          from: Same
+{{- end }}
