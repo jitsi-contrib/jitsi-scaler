@@ -40,6 +40,13 @@ spec:
       serviceAccountName: {{ include "jitsi-scaler.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.haproxy.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+        {{- with .Values.haproxy.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.haproxy.image.repository }}:{{ .Values.haproxy.image.tag }}"
@@ -53,19 +60,33 @@ spec:
             - name: http
               containerPort: {{ .Values.haproxy.service.port }}
               protocol: TCP
+          {{- with .Values.haproxy.livenessProbe }}
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.haproxy.readinessProbe }}
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.haproxy.resources | nindent 12 }}
           volumeMounts:
             - name: config
               mountPath: /usr/local/etc/haproxy/haproxy.cfg
               subPath: haproxy.cfg
-      volumes:
-        - name: config
-          configMap:
-            name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+            {{- with .Values.haproxy.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+
+      {{- with .Values.haproxy.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.haproxy.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.haproxy.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
