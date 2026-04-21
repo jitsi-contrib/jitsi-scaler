@@ -55,7 +55,7 @@ spec:
             {{- toYaml .Values.haproxy.securityContext | nindent 12 }}
           envFrom:
             - configMapRef:
-              name: {{ include "jitsi-meet.haproxy.fullname" . }}
+              name: {{ include "jitsi-scaler.haproxy.fullname" . }}
           ports:
             - name: http
               containerPort: {{ .Values.haproxy.service.port }}

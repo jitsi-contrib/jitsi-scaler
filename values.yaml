@@ -141,10 +141,9 @@ haproxy:
     enabled: false
     ingressClassName: nginx
     annotations: {}
-    hosts:
-      - host: "jitsi.local"
-        paths:
-          - path: "/"
+    host: "jitsi.local"
+    paths:
+      - "/"
     tls:
       enabled: false
       secretName: jitsi-web-tls
