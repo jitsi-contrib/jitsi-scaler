@@ -11,6 +11,12 @@ data:
         log stdout format raw local0
         maxconn 4096
 
+    peers mypeers
+        {{- $name := include "jitsi-scaler.haproxy.fullname" . }}
+        {{- range $i := until (int .Values.haproxy.replicaCount) }}
+        peer {{ $name }}-{{ $i }} {{ $name }}-{{ $i }}.{{ $name }}-peers:1024
+        {{- end }}
+
     defaults
         log global
         mode http
@@ -25,7 +31,7 @@ data:
         bind *:80
 
         # Room-based stickiness table
-        stick-table type string len 64 size 100k expire 30m
+        stick-table type string len 64 size 100k expire 30m peers mypeers
         stick on path,field(1,/)
 
         # Shard0 routing for auxiliary services
@@ -38,7 +44,7 @@ data:
     # Load balanced pool for all enabled shards
     backend jitsi_shard_pool
         balance roundrobin
-        stick-table type string len 64 size 100k expire 30m
+        stick-table type string len 64 size 100k expire 30m peers mypeers
         stick on path,field(1,/)
 
         {{- range $key, $value := .Values }}

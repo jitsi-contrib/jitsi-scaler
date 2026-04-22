@@ -2,20 +2,20 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+  name: {{ include "jitsi-scaler.haproxy.fullname" . }}-peers
   labels:
     {{- include "jitsi-scaler.haproxy.labels" . | nindent 4 }}
-  {{- with .Values.haproxy.service.annotations }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
 spec:
-  type: {{ .Values.haproxy.service.type }}
+  clusterIP: None
   ports:
     - name: http
       port: {{ .Values.haproxy.service.port }}
       protocol: TCP
       targetPort: http
+    - name: peers
+      port: 1024
+      protocol: TCP
+      targetPort: peers
   selector:
     {{- include "jitsi-scaler.haproxy.selectorLabels" . | nindent 4 }}
 {{- end }}

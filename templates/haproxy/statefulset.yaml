@@ -1,6 +1,6 @@
 {{- if .Values.haproxy.enabled -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "jitsi-scaler.haproxy.fullname" . }}
   labels:
@@ -14,6 +14,7 @@ metadata:
   {{- end }}
 spec:
   replicas: {{ .Values.haproxy.replicaCount }}
+  serviceName: {{ include "jitsi-scaler.haproxy.fullname" . }}-peers
   selector:
     matchLabels:
       {{- include "jitsi-scaler.haproxy.selectorLabels" . | nindent 6 }}
@@ -60,6 +61,9 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.haproxy.service.port }}
+              protocol: TCP
+            - name: peers
+              containerPort: 1024
               protocol: TCP
           {{- with .Values.haproxy.livenessProbe }}
           livenessProbe:
