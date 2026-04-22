@@ -8,10 +8,6 @@ metadata:
 spec:
   clusterIP: None
   ports:
-    - name: http
-      port: {{ .Values.haproxy.service.port }}
-      protocol: TCP
-      targetPort: http
     - name: peers
       port: 1024
       protocol: TCP
