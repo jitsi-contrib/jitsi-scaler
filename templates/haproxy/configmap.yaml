@@ -35,7 +35,7 @@ data:
         stick on path,field(1,/)
 
         # Shard0 routing for auxiliary services
-        acl is__aux_service path_beg /etherpad /excalidraw
+        acl is_aux_service path_beg /etherpad /excalidraw
         use_backend shard0_backend if is_aux_service
 
         # Default distribution across all enabled shards
