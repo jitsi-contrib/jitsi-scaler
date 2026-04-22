@@ -25,8 +25,6 @@ data:
         hold valid 10s
 
     peers mypeers
-        bind :1024
-
         {{- $name := include "jitsi-scaler.haproxy.fullname" . }}
         {{- range $i := until (int .Values.haproxy.replicaCount) }}
         peer {{ $name }}-{{ $i }} {{ $name }}-{{ $i }}.{{ $name }}-peers:1024
