@@ -37,11 +37,12 @@ data:
         option forwardfor
         option http-keep-alive
 
-        # Shard0 routing for auxiliary services
+        stick-table type string len 64 size 100k expire 30m peers mypeers
+
+        # Shard0 routing for auxiliary services before sticking
         acl is_aux_service path_beg /etherpad /excalidraw
         use_backend shard0_backend if is_aux_service
 
-        stick-table type string len 64 size 100k expire 30m peers mypeers
         stick store-request url_param(room)
 
         default_backend jitsi_shard_pool
@@ -49,6 +50,7 @@ data:
     backend jitsi_shard_pool
         balance roundrobin
         option httpchk
+        http-check send meth GET hdr User-Agent haproxy
         http-reuse safe
 
         stick match url_param(room) table jitsi-frontend
