@@ -9,12 +9,13 @@ data:
   haproxy.cfg: |
     global
         log stdout format raw local0 info
-        maxconn 4096
+        maxconn 10000
 
     defaults
         log             global
         mode            http
         option          httplog
+        option          dontlognull
         timeout connect 5s
         timeout client  50s
         timeout server  50s
@@ -35,23 +36,20 @@ data:
         option forwardfor
         option http-keep-alive
 
-        stick-table type string len 64 size 100k expire 30m peers mypeers
-
         # Shard0 routing for auxiliary services before sticking
         acl is_aux_service path_beg /etherpad /excalidraw
-        use_backend shard0_backend if is_aux_service
+        use_backend aux_backend if is_aux_service
 
-        stick store-request url_param(room)
+        default_backend jitsi_backend
 
-        default_backend jitsi_shard_pool
-
-    backend jitsi_shard_pool
+    backend jitsi_backend
         balance roundrobin
         option httpchk
         http-check send meth GET hdr User-Agent haproxy
         http-reuse safe
 
-        stick match url_param(room) table jitsi-frontend
+        stick-table type string len 128 size 100k expire 2h peers mypeers
+        stick on url_param(room) if { url_param(room) -m found }
 
         {{- range $key, $value := .Values }}
         {{-   if and (regexMatch "^shard[0-9]+$" $key) $value.enabled }}
@@ -59,8 +57,7 @@ data:
         {{-   end }}
         {{- end }}
 
-    # Dedicated backend for Shard0 auxiliary services
-    backend shard0_backend
+    backend aux_backend
         server shard0 {{ .Release.Name }}-shard0-web:80 check
 
   {{- range $key, $value := .Values.haproxy.extraEnvs }}

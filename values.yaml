@@ -62,6 +62,7 @@ serviceAccount:
 #   shards.
 # ------------------------------------------------------------------------------
 shard0:
+  # Dont disable shard0 if there are enabled aux services.
   enabled: true
   <<: *jitsiDefaults
 
