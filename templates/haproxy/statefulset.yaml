@@ -64,7 +64,7 @@ spec:
               containerPort: {{ .Values.haproxy.service.port }}
               protocol: TCP
             - name: peers
-              containerPort: 1024
+              containerPort: {{ .Values.haproxy.servicePeers.port }}
               protocol: TCP
           {{- with .Values.haproxy.livenessProbe }}
           livenessProbe:

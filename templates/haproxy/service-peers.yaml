@@ -10,7 +10,7 @@ spec:
   publishNotReadyAddresses: true
   ports:
     - name: peers
-      port: 1024
+      port: {{ .Values.haproxy.servicePeers.port }}
       protocol: TCP
       targetPort: peers
   selector:

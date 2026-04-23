@@ -150,6 +150,9 @@ haproxy:
     port: 8080
     annotations: {}
 
+  servicePeers:
+    port: 8090
+
   gateway:
     enabled: false
     gatewayClassName: envoy-gateway-class

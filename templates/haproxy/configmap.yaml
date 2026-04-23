@@ -27,8 +27,9 @@ data:
 
     peers mypeers
         {{- $name := include "jitsi-scaler.haproxy.fullname" . }}
+        {{- $port := .Values.haproxy.servicePeers.port }}
         {{- range $i := until (int .Values.haproxy.replicaCount) }}
-        peer {{ $name }}-{{ $i }} {{ $name }}-{{ $i }}.{{ $name }}-peers:1024
+        peer {{ $name }}-{{ $i }} {{ $name }}-{{ $i }}.{{ $name }}-peers:{{ $port }}
         {{- end }}
 
     frontend jitsi-frontend
