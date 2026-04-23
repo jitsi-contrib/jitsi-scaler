@@ -45,7 +45,7 @@ data:
     backend jitsi_backend
         balance roundrobin
         option httpchk
-        http-check send meth GET hdr User-Agent haproxy
+        http-check expect status 200-399,405
         http-reuse safe
 
         stick-table type string len 128 size 100k expire 2h peers mypeers
@@ -53,7 +53,7 @@ data:
 
         {{- range $key, $value := .Values }}
         {{-   if and (regexMatch "^shard[0-9]+$" $key) $value.enabled }}
-        server {{ $key }} {{ $.Release.Name }}-{{ $key }}-web:80 check resolvers myresolver init-addr none
+        server {{ $key }} {{ $.Release.Name }}-{{ $key }}-web:80 check
         {{-   end }}
         {{- end }}
 
