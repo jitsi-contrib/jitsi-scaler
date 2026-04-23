@@ -66,7 +66,8 @@ shard0:
   enabled: true
 
   <<: *jitsiDefaults
-  UDPPort: 10000
+  jvb:
+    UDPPort: 10000
 
   # Auxiliary services
   coturn:
@@ -80,55 +81,64 @@ shard1:
   enabled: true
 
   <<: *jitsiDefaults
-  UDPPort: 10100
+  jvb:
+    UDPPort: 10100
 
 shard2:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10200
+  jvb:
+    UDPPort: 10200
 
 shard3:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10300
+  jvb:
+    UDPPort: 10300
 
 shard4:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10400
+  jvb:
+    UDPPort: 10400
 
 shard5:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10500
+  jvb:
+    UDPPort: 10500
 
 shard6:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10600
+  jvb:
+    UDPPort: 10600
 
 shard7:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10700
+  jvb:
+    UDPPort: 10700
 
 shard8:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10800
+  jvb:
+    UDPPort: 10800
 
 shard9:
   enabled: false
 
   <<: *jitsiDefaults
-  UDPPort: 10900
+  jvb:
+    UDPPort: 10900
 
 # ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
