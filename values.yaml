@@ -41,17 +41,20 @@ serviceAccount:
     ingress:
       enabled: false
 
-  jvb:
-    replicaCount: 1
-    portRangeSize: 2
-    # The first port of the range (UDPPort) is located within each shard.
-
-    useHostPort: true
-    service:
-      enabled: false
-
   octo:
     enabled: true
+
+# ------------------------------------------------------------------------------
+# DEFAULT JVB CONFIGURATION
+# ------------------------------------------------------------------------------
+.jvbDefaults: &jvbDefaults
+  replicaCount: 1
+  portRangeSize: 2
+  # The first port of the range (UDPPort) is located within each shard.
+
+  useHostPort: true
+  service:
+    enabled: false
 
 # ------------------------------------------------------------------------------
 # SHARD CONFIGURATION
@@ -66,7 +69,9 @@ shard0:
   enabled: true
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10000
 
   # Auxiliary services
@@ -81,63 +86,81 @@ shard1:
   enabled: true
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10100
 
 shard2:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10200
 
 shard3:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10300
 
 shard4:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10400
 
 shard5:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10500
 
 shard6:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10600
 
 shard7:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10700
 
 shard8:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10800
 
 shard9:
   enabled: false
 
   <<: *jitsiDefaults
+
   jvb:
+    <<: *jvbDefaults
     UDPPort: 10900
 
 # ------------------------------------------------------------------------------
