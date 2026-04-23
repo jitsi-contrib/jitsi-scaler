@@ -7,6 +7,7 @@ metadata:
     {{- include "jitsi-scaler.haproxy.labels" . | nindent 4 }}
 spec:
   clusterIP: None
+  publishNotReadyAddresses: true
   ports:
     - name: peers
       port: 1024
