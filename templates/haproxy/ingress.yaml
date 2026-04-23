@@ -3,7 +3,7 @@
        .Values.haproxy.ingress.enabled
        (not .Values.haproxy.gateway.enabled)
 -}}
-{{-   $svcPort := .Values.haproxy.service.port -}}
+{{- $svcPort := .Values.haproxy.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -33,7 +33,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "jitsi-scaler.haproxy.fullname" . }}
+                name: {{ include "jitsi-scaler.haproxy.fullname" $ }}
                 port:
                   {{- if kindIs "float64" $svcPort }}
                   number: {{ $svcPort }}
