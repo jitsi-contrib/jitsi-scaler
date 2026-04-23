@@ -42,11 +42,11 @@ serviceAccount:
       enabled: false
 
   jvb:
-    replicaCount: 2
-    portRangeSize: 1
+    replicaCount: 1
+    portRangeSize: 2
+    # The first port of the range (UDPPort) is located within each shard.
 
     useHostPort: true
-    UDPPort: 10000
     service:
       enabled: false
 
@@ -64,7 +64,9 @@ serviceAccount:
 shard0:
   # Dont disable shard0 if there are enabled aux services.
   enabled: true
+
   <<: *jitsiDefaults
+  UDPPort: 10000
 
   # Auxiliary services
   coturn:
@@ -76,39 +78,57 @@ shard0:
 
 shard1:
   enabled: true
+
   <<: *jitsiDefaults
+  UDPPort: 10100
 
 shard2:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10200
 
 shard3:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10300
 
 shard4:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10400
 
 shard5:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10500
 
 shard6:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10600
 
 shard7:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10700
 
 shard8:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10800
 
 shard9:
   enabled: false
+
   <<: *jitsiDefaults
+  UDPPort: 10900
 
 # ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
