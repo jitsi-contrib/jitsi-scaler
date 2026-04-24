@@ -86,6 +86,8 @@ shard1:
   enabled: true
 ```
 
+See also [Sample values files](/docs/samples/)
+
 ## Contributing
 
 Contributions are welcome. If you have technical improvements for the HAProxy
