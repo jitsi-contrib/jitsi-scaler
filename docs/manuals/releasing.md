@@ -17,11 +17,11 @@ Overall, the release process looks like this:
   gpg --keyserver hkps://keys.openpgp.org --recv-keys "$KEY_ID"
 
   # Use your GPG signing identity
-  helm package . -d ./artifacts/ --sign --key "$KEY_EMAIL" --keyring ~/.gnupg/secring.gpg
+  helm package . -d ./docs/ --sign --key "$KEY_EMAIL" --keyring ~/.gnupg/secring.gpg
   ```
 - Update the index:
   ```bash
-  cd artifacts
+  cd docs
   cp index.yaml /tmp/
   helm repo index . --url https://jitsi-contrib.github.io/jitsi-scaler/ --merge index.yaml
   ```
