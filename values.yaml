@@ -41,6 +41,12 @@ serviceAccount:
     ingress:
       enabled: false
 
+  excalidraw:
+    enabled: false
+
+  etherpad:
+    enabled: false
+
   octo:
     enabled: true
 
@@ -76,10 +82,6 @@ shard0:
 
   # Auxiliary services
   coturn:
-    enabled: false
-  excalidraw:
-    enabled: false
-  etherpad:
     enabled: false
 
 shard1:

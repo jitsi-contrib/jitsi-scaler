@@ -33,30 +33,6 @@ enables horizontal growth by:
   HAProxy instances run in a mesh via the peers protocol, preventing session
   loss or "shard hopping" during pod restarts.
 
-- **Auxiliary Service Fast-Path**\
-  Requests for `/etherpad` or `/excalidraw` bypass the stickiness logic for
-  immediate delivery to the auxiliary backend, reducing unnecessary processing
-  overhead.
-
-## Architecture
-
-The traffic flow is designed for minimal latency and high reliability:
-
-- **Frontend**\
-  HAProxy identifies incoming traffic types (meeting vs. auxiliary service).
-
-- **Stick Table**\
-  A shared memory space defined in the frontend that tracks room-to-shard
-  mappings.
-
-- **Backends**
-  - **jitsi_backend**\
-    The primary pool of active Jitsi shards where room stickiness is enforced.
-
-  - **aux_backend**\
-    A dedicated backend for auxiliary services that do not require meeting-state
-    tracking.
-
 ## Installation
 
 ```bash

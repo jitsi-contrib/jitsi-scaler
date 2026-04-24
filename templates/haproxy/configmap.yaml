@@ -37,10 +37,6 @@ data:
         option forwardfor
         option http-keep-alive
 
-        # Shard0 routing for auxiliary services before sticking
-        acl is_aux_service path_beg /etherpad /excalidraw
-        use_backend aux_backend if is_aux_service
-
         default_backend jitsi_backend
 
     backend jitsi_backend
@@ -61,9 +57,6 @@ data:
         server {{ $key }} {{ $.Release.Name }}-{{ $key }}-web:80 check
         {{-   end }}
         {{- end }}
-
-    backend aux_backend
-        server shard0 {{ .Release.Name }}-shard0-web:80 check
 
   {{- range $key, $value := .Values.haproxy.extraEnvs }}
   {{-   if not (kindIs "invalid" $value) }}
