@@ -1,0 +1,9 @@
+{{- if or .Values.haproxy.gateway.enabled .Values.haproxy.ingress.enabled -}}
+🚀 Jitsi Meet is being deployed!
+
+Your application will be available at:
+{{ .Values.shard0.publicURL }}
+
+It may take a few minutes for the LoadBalancer IP to be assigned
+and for DNS to propagate.
+{{- end }}
