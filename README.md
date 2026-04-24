@@ -1,6 +1,6 @@
 # Jitsi Scaler
 
-** NOT READY YET **
+** STILL IN BETA **
 
 A highly-available Helm chart for deploying Jitsi Meet with multi-shard
 horizontal scaling. This repository builds upon
