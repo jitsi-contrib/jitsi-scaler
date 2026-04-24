@@ -3,7 +3,7 @@
 A highly-available Helm chart for deploying Jitsi Meet with multi-shard
 horizontal scaling. This repository builds upon
 [jitsi-helm](https://github.com/jitsi-contrib/jitsi-helm) to provide a
-coordinated architecture for large-scale, distributed deployments.
+coordinated architecture for large-scale deployments.
 
 ## Overview
 
@@ -19,35 +19,41 @@ enables horizontal growth by:
 
 ## Key Features
 
-- **Horizontal Sharding** Add or remove shards to support thousands of
-  concurrent participants across independent stacks.
+- **Horizontal Sharding**\
+  Add or remove shards to support thousands of concurrent participants across
+  independent stacks.
 
-- **Room-Based Persistence** Automatically extracts `url_param(room)` to ensure
-  all participants for a specific meeting land on the same backend shard.
+- **Room-Based Persistence**\
+  Automatically extracts `url_param(room)` to ensure all participants for a
+  specific meeting land on the same backend shard.
 
-- **Proxy State Synchronization** HAProxy instances run in a mesh via the peers
-  protocol, preventing session loss or "shard hopping" during pod restarts.
+- **Proxy State Synchronization**\
+  HAProxy instances run in a mesh via the peers protocol, preventing session
+  loss or "shard hopping" during pod restarts.
 
-- **Auxiliary Service Fast-Path** Requests for `/etherpad` or `/excalidraw`
-  bypass the stickiness logic for immediate delivery to the auxiliary backend,
-  reducing unnecessary processing overhead.
+- **Auxiliary Service Fast-Path**\
+  Requests for `/etherpad` or `/excalidraw` bypass the stickiness logic for
+  immediate delivery to the auxiliary backend, reducing unnecessary processing
+  overhead.
 
 ## Architecture
 
 The traffic flow is designed for minimal latency and high reliability:
 
-- **Frontend** HAProxy identifies incoming traffic types (meeting vs. auxiliary
-  service).
+- **Frontend**\
+  HAProxy identifies incoming traffic types (meeting vs. auxiliary service).
 
-- **Stick Table** A shared memory space defined in the frontend that tracks
-  room-to-shard mappings.
+- **Stick Table**\
+  A shared memory space defined in the frontend that tracks room-to-shard
+  mappings.
 
 - **Backends**
-  - **jitsi_backend** The primary pool of active Jitsi shards where room
-    stickiness is enforced.
+  - **jitsi_backend**\
+    The primary pool of active Jitsi shards where room stickiness is enforced.
 
-  - **aux_backend** A dedicated backend for auxiliary services that do not
-    require meeting-state tracking.
+  - **aux_backend**\
+    A dedicated backend for auxiliary services that do not require meeting-state
+    tracking.
 
 ## Installation
 
