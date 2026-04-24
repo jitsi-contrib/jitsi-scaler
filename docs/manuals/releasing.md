@@ -17,6 +17,7 @@ Overall, the release process looks like this:
   gpg --keyserver hkps://keys.openpgp.org --recv-keys "$KEY_ID"
 
   # Use your GPG signing identity
+  helm dependency update
   helm package . -d ./docs/ --sign --key "$KEY_EMAIL" --keyring ~/.gnupg/secring.gpg
   ```
 - Update the index:
