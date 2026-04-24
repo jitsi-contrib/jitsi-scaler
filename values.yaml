@@ -17,155 +17,6 @@ serviceAccount:
   name:
 
 # ------------------------------------------------------------------------------
-# DEFAULT JITSI CONFIGURATION
-#
-# This master template ensures all Jitsi shards share the same base settings.
-#
-# See values.yaml in jitsi-helm for possible values:
-#   https://github.com/jitsi-contrib/jitsi-helm/blob/main/values.yaml
-# ------------------------------------------------------------------------------
-.jitsiDefaults: &jitsiDefaults
-  publicURL: ""
-  turnHost: ""
-  tz: "UTC"
-
-  websockets:
-    colibri:
-      enabled: false
-    xmpp:
-      enabled: true
-
-  web:
-    gateway:
-      enabled: false
-    ingress:
-      enabled: false
-
-  excalidraw:
-    enabled: false
-
-  etherpad:
-    enabled: false
-
-  octo:
-    enabled: true
-
-# ------------------------------------------------------------------------------
-# DEFAULT JVB CONFIGURATION
-# ------------------------------------------------------------------------------
-.jvbDefaults: &jvbDefaults
-  replicaCount: 1
-  portRangeSize: 2
-  # The first port of the range (UDPPort) is located within each shard.
-
-  useHostPort: true
-  service:
-    enabled: false
-
-# ------------------------------------------------------------------------------
-# SHARD CONFIGURATION
-#
-# - Toggle shards 'true' to deploy capacity.
-# - Each enabled shard will deploy a full Jitsi stack.
-# - Shard0 contains also auxiliary services if they are enabled unlike the other
-#   shards.
-# ------------------------------------------------------------------------------
-shard0:
-  # Dont disable shard0 if there are enabled aux services.
-  enabled: true
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10000
-
-  # Auxiliary services
-  coturn:
-    enabled: false
-
-shard1:
-  enabled: true
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10100
-
-shard2:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10200
-
-shard3:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10300
-
-shard4:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10400
-
-shard5:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10500
-
-shard6:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10600
-
-shard7:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10700
-
-shard8:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10800
-
-shard9:
-  enabled: false
-
-  <<: *jitsiDefaults
-
-  jvb:
-    <<: *jvbDefaults
-    UDPPort: 10900
-
-# ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
 #
 # This is the entry point for all users. It handles room-based sticky routing.
@@ -190,25 +41,25 @@ haproxy:
 
   gateway:
     enabled: false
-    gatewayClassName: envoy-gateway-class
+    gatewayClassName: "envoy-gateway-class"
     annotations: {}
     host: "jitsi.local"
     paths:
       - "/"
     tls:
       enabled: false
-      secretName: jitsi-web-tls
+      secretName: "jitsi-web-tls"
 
   ingress:
     enabled: false
-    ingressClassName: nginx
+    ingressClassName: "nginx"
     annotations: {}
     host: "jitsi.local"
     paths:
       - "/"
     tls:
       enabled: false
-      secretName: jitsi-web-tls
+      secretName: "jitsi-web-tls"
 
   livenessProbe:
     httpGet:
@@ -234,3 +85,129 @@ haproxy:
   podSecurityContext: {}
   securityContext: {}
   tolerations: []
+
+# ------------------------------------------------------------------------------
+# DEFAULT JITSI CONFIGURATION
+#
+# This master template ensures all Jitsi shards share the same base settings.
+#
+# See values.yaml in jitsi-helm for possible values:
+#   https://github.com/jitsi-contrib/jitsi-helm/blob/main/values.yaml
+# ------------------------------------------------------------------------------
+.jitsiDefaults: &jitsiDefaults
+  publicURL: ""
+  turnHost: ""
+  tz: "UTC"
+
+  websockets:
+    colibri:
+      enabled: false
+    xmpp:
+      enabled: true
+
+  web:
+    gateway:
+      enabled: false
+    ingress:
+      enabled: false
+
+  octo:
+    enabled: true
+
+# ------------------------------------------------------------------------------
+# DEFAULT JVB CONFIGURATION
+# ------------------------------------------------------------------------------
+.jvbDefaults: &jvbDefaults
+  replicaCount: 1
+  portRangeSize: 2
+
+  # The first port of the range (UDPPort) is located within each shard.
+  # By the way, these are the default values. You can change them or use another
+  # method (instead of useHostPort) in your custom values file according to your
+  # environment.
+
+  useHostPort: true
+  service:
+    enabled: false
+
+# ------------------------------------------------------------------------------
+# SHARD CONFIGURATION
+#
+# - Toggle shards 'true' to deploy capacity.
+# - Each enabled shard will deploy a full Jitsi stack.
+# ------------------------------------------------------------------------------
+shard0:
+  # Dont disable shard0 if there are enabled aux services.
+  enabled: true
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10000
+
+  # Auxiliary services
+  coturn:
+    enabled: false
+    replicaCount: 1
+
+shard1:
+  enabled: true
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10100
+
+shard2:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10200
+
+shard3:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10300
+
+shard4:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10400
+
+shard5:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10500
+
+shard6:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10600
+
+shard7:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10700
+
+shard8:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10800
+
+shard9:
+  enabled: false
+  <<: *jitsiDefaults
+  jvb:
+    <<: *jvbDefaults
+    UDPPort: 10900
