@@ -1,4 +1,14 @@
 # ------------------------------------------------------------------------------
+# This is a sample config with:
+# - 2 HAProxy instances in sync
+# - 3 Jitsi shards
+# - 3 JVBs in each shard (9 in total)
+# - 1 Excalidraw in each shard (3 in total)
+# - 1 Etherpad in each shard (3 in total)
+# - Jitsi domain is meet.example.com
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
 # ------------------------------------------------------------------------------
 haproxy:
