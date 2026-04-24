@@ -1,0 +1,62 @@
+# ------------------------------------------------------------------------------
+# DEFAULT JITSI CONFIGURATION
+# ------------------------------------------------------------------------------
+.jitsiDefaults: &jitsiDefaults
+  publicURL: "https://meet.example.com"
+
+  jvb:
+    replicaCount: 1
+    portRangeSize: 3
+
+# ------------------------------------------------------------------------------
+# SHARD CONFIGURATION
+# ------------------------------------------------------------------------------
+shard0:
+  enabled: true
+  <<: *jitsiDefaults
+
+  # Auxiliary services
+  excalidraw:
+    enabled: true
+
+shard1:
+  enabled: true
+  <<: *jitsiDefaults
+ 
+shard2:
+  enabled: true
+  <<: *jitsiDefaults
+
+# ------------------------------------------------------------------------------
+# HAPROXY CONFIGURATION
+# ------------------------------------------------------------------------------
+haproxy:
+  enabled: true
+  replicaCount: 2
+
+  ingress:
+    #enabled: false
+    enabled: true
+    ingressClassName: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    host: "meet.example.com"
+    paths:
+      - "/"
+    tls:
+      #enabled: false
+      enabled: true
+      secretName: "jitsi-web-tls"
+
+  gateway:
+    enabled: false
+    gatewayClassName: "envoy-gateway-class"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    host: "meet.example.com"
+    paths:
+      - "/"
+    tls:
+      #enabled: false
+      enabled: true
+      secretName: "jitsi-web-tls"
