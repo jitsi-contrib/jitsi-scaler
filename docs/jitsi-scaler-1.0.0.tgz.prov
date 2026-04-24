@@ -1,0 +1,92 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/category: streaming-messaging
+  artifacthub.io/links: |
+    - name: Jitsi-Scaler GitHub
+      url: https://github.com/jitsi-contrib/jitsi-scaler
+    - name: Jitsi Meet
+      url: https://jitsi.org/jitsi-meet/
+    - name: Jitsi Meet Documentation
+      url: https://jitsi.github.io/handbook/docs/intro/
+    - name: Jitsi-Helm GitHub
+      url: https://github.com/jitsi-contrib/jitsi-helm
+apiVersion: v2
+appVersion: 2.16.0
+dependencies:
+- - alias: shard0
+  condition: shard0.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard1
+  condition: shard1.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard2
+  condition: shard2.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard3
+  condition: shard3.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard4
+  condition: shard4.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard5
+  condition: shard5.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard6
+  condition: shard6.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard7
+  condition: shard7.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard8
+  condition: shard8.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+- - alias: shard9
+  condition: shard9.enabled
+  name: jitsi-meet
+  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  version: 2.16.0
+description: Horizontal scaling and high availability for Jitsi Meet
+icon: https://jitsi-contrib.github.io/jitsi-helm/jitsi-meet.png
+name: jitsi-scaler
+type: application
+version: 1.0.0
+
+...
+files:
+  jitsi-scaler-1.0.0.tgz: sha256:69079aed4f9ed0c18c741d1be776a461fd41f9100d200dbdeb32b7e25ff5c3c1
+-----BEGIN PGP SIGNATURE-----
+
+wsFcBAEBCgAQBQJp634/CRCMkGqlTqyzCgAAN3YQACPYwEGGY0yOLf3iMNhRb4Fp
+nZPe5rinWjIwpXLh0mzWzSTI6dGaEATR8I88H2WCNAwWnRHWwLlCjPU5K1y/gXGg
+wd7DlY3icP+WoecwXXGJ2h5jhhLOKzg2RwmWzu1d7WLwfg3BqJhHXXi5l6gqMJMP
+JZsbOGQ7JubO18c+4oNPEMIUrfgLnxW/dp6U7tqtea4yyxejy8GlXmAsbiohk2wd
+jdrkW84sMcbn9bIyJZYEUSw38qw0cQUq9H1ltmsC05Odtc/Ix6v3KHDhh05vhfDq
+tsC9Q3tIL6WDRGAx1NN+ofVHNZvLTXht+zgM6RVLtEAzlplufmUvm6vlAIjcMziI
+9HM4Ngxv/QAWcjkuSq3HyvkNECjGsHxC4gC9zu/uJZoze/Q4pfL0+1Znd0f+j+D3
+yQgtrYPnUxmFM4U053RxnMGudSIEDcrLQp8W+mim2rk9ciJZneU0kYgRnSuxw40Y
+DAsS5PmtLsVS7pg5zTtoDpVbWCV3ECAXCcMqCh0brzmJ2P6ymGNco+hwXBiMrQBi
+SdDPPu137/p57rj3/KSCBlrMf9c+OuClQJv/MpgGQG++79JvR/O9Ftti3cjNYjvf
+/W671EUaYVo1uy/qU2nKvKT4/4yDrfZWeqrv33u3CCTau6TA4YznD2phlKgom40h
+7iSpGIXxE1xcJDr62ABb
+=Ndjn
+-----END PGP SIGNATURE-----
