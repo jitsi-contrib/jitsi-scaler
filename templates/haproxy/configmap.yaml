@@ -49,8 +49,12 @@ data:
         http-check expect status 200-399,405
         http-reuse safe
 
+        acl has_room url_param(room) -m found
+        acl has_pad  url_param(padId) -m found
+
         stick-table type string len 128 size 100k expire 2h peers mypeers
-        stick on url_param(room) if { url_param(room) -m found }
+        stick on url_param(room) if has_room
+        stick on url_param(padId) if !has_room has_pad
 
         {{- range $key, $value := .Values }}
         {{-   if and (regexMatch "^shard[0-9]+$" $key) $value.enabled }}
