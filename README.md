@@ -33,6 +33,15 @@ enables horizontal growth by:
 
 ## Installation
 
+### Installation using Helm repo
+
+```bash
+helm repo add jitsi-scaler https://jitsi-contrib.github.io/jitsi-scaler/
+helm install -f myvalues.yaml mycluster jitsi-scaler/jitsi-scaler
+```
+
+### Installation using Git repo
+
 ```bash
 # Clone the repository
 git clone https://github.com/jitsi-contrib/jitsi-scaler
@@ -41,8 +50,8 @@ cd jitsi-scaler
 # Update the jitsi-helm dependency
 helm dependency update
 
-# Install the chart
-helm install jitsi-deployment . -f values.yaml
+# Install
+helm install -f myvalues.yaml mycluster .
 ```
 
 ## Configuration
