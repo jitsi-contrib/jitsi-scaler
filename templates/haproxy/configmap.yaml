@@ -21,11 +21,10 @@ data:
         timeout server  50s
         timeout tunnel  3600s
 
-    resolvers myresolver
-        parse-resolv-conf
-        hold valid 10s
-
     peers mypeers
+        # podManagementPolicy is set as Parallel for haproxy statefulsets to
+        # make their services available at the initial stage. Peers expects all
+        # services to be available to allow HAProxy to start.
         {{- $name := include "jitsi-scaler.haproxy.fullname" . }}
         {{- $port := .Values.haproxy.servicePeers.port }}
         {{- range $i := until (int .Values.haproxy.replicaCount) }}
@@ -45,10 +44,13 @@ data:
         http-check expect status 200-399,405
         http-reuse safe
 
+        # jitsi and excalidraw use room as querystring in their websockets.
+        # etherpad uses padId as querystring in its websockets.
+        # room in path is not important since it is only exist for static files.
         acl has_room url_param(room) -m found
         acl has_pad  url_param(padId) -m found
 
-        stick-table type string len 128 size 100k expire 2h peers mypeers
+        stick-table type string len 128 size 100k expire 24h peers mypeers
         stick on url_param(room) if has_room
         stick on url_param(padId) if !has_room has_pad
 
