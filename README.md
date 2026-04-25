@@ -7,6 +7,8 @@ coordinated architecture for large-scale deployments.
 
 ## Overview
 
+![Layers](docs/images/layers.png)
+
 Standard Jitsi deployments typically operate as a single shard. Jitsi Scaler
 enables horizontal growth by:
 
