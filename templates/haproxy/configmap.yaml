@@ -56,7 +56,7 @@ data:
 
         {{- range $key, $value := .Values }}
         {{-   if and (regexMatch "^shard[0-9]+$" $key) $value.enabled }}
-        server {{ $key }} {{ $.Release.Name }}-{{ $key }}-web:80 check
+        server {{ $key }} {{ $.Release.Name }}-{{ $key }}-web:{{ $.Values.haproxy.backend.port }} check
         {{-   end }}
         {{- end }}
 
