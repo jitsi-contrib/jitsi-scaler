@@ -86,6 +86,9 @@ haproxy:
   securityContext: {}
   tolerations: []
 
+  backend:
+    port: 80
+
 # ------------------------------------------------------------------------------
 # DEFAULT JITSI CONFIGURATION
 #
