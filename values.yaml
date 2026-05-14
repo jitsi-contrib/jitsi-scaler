@@ -39,6 +39,10 @@ haproxy:
   servicePeers:
     port: 8090
 
+  backend:
+    # If you update the Jitsi web port, update this port accordingly.
+    port: 80
+
   gateway:
     enabled: false
     gatewayClassName: "envoy-gateway-class"
@@ -85,9 +89,6 @@ haproxy:
   podSecurityContext: {}
   securityContext: {}
   tolerations: []
-
-  backend:
-    port: 80
 
 # ------------------------------------------------------------------------------
 # DEFAULT JITSI CONFIGURATION
