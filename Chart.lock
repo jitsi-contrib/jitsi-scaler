@@ -1,33 +1,33 @@
 dependencies:
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
+  version: 2.18.0
 - name: jitsi-meet
   repository: https://jitsi-contrib.github.io/jitsi-helm/
-  version: 2.17.0
-digest: sha256:f267963dffc55d24db1598b471bf1908cd8f66b7704ae88e6a6f4c9f82582261
-generated: "2026-05-13T22:20:08.170474165+03:00"
+  version: 2.18.0
+digest: sha256:df9e6db8e8c2ad749e1b30e020ae6d10547b9df7bcd1d05c80e36a786c05064d
+generated: "2026-05-21T11:11:11.888018374+03:00"
