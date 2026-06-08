@@ -27,7 +27,7 @@ haproxy:
 
   image:
     repository: haproxy
-    tag: "3.2-alpine"
+    tag: "3.4-alpine"
     pullPolicy: IfNotPresent
     pullSecrets: []
 
