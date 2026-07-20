@@ -42,6 +42,24 @@ helm repo add jitsi-scaler https://jitsi-contrib.github.io/jitsi-scaler/
 helm install -f myvalues.yaml mycluster jitsi-scaler/jitsi-scaler
 ```
 
+### Installation using OCI registry
+
+Alternatively, install directly from the OCI registry (GitHub Container
+Registry):
+
+```bash
+helm install -f myvalues.yaml mycluster oci://ghcr.io/jitsi-contrib/jitsi-scaler
+```
+
+OCI releases are signed with [cosign](https://github.com/sigstore/cosign)
+(keyless). To verify a release before installing:
+
+```bash
+cosign verify ghcr.io/jitsi-contrib/jitsi-scaler:<version> \
+  --certificate-identity-regexp '^https://github.com/jitsi-contrib/jitsi-scaler/' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
 ### Installation using Git repo
 
 ```bash
