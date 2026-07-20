@@ -1,33 +1,33 @@
 dependencies:
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
 - name: jitsi-meet
-  repository: https://jitsi-contrib.github.io/jitsi-helm/
+  repository: oci://ghcr.io/jitsi-contrib
   version: 2.21.0
-digest: sha256:cd99b5bde5f964cc346a76bc5c3cfaae9835fd2e657ab28238191401a318f352
-generated: "2026-07-16T18:02:32.821182218+03:00"
+digest: sha256:19a2b1638449e61cb7e179bc1955ef24c6685cf26b261d2c589074bad47eb38a
+generated: "2026-07-20T16:54:55.535512557+03:00"
