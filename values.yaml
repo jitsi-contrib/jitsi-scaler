@@ -104,8 +104,6 @@ haproxy:
   tz: "UTC"
 
   websockets:
-    colibri:
-      enabled: false
     xmpp:
       enabled: true
 
