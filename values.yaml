@@ -77,6 +77,9 @@ haproxy:
 
   affinity: {}
   annotations: {}
+  # HAProxy never talks to the Kubernetes API (it routes by cluster DNS), so the
+  # ServiceAccount token is not mounted by default, keeping it out of the pod.
+  automountServiceAccountToken: false
   extraEnvs: {}
   extraVolumes: []
   extraVolumeMounts: []
@@ -86,8 +89,26 @@ haproxy:
   resources: {}
   podAnnotations: {}
   podLabels: {}
-  podSecurityContext: {}
-  securityContext: {}
+  # HAProxy runs rootless with a read-only root filesystem, matching the
+  # hardened Jitsi containers. The default config logs to stdout, binds only
+  # the unprivileged service.port / servicePeers.port, and opens no stats
+  # socket or chroot, so it needs no Linux capabilities and no writable path
+  # beyond the /tmp emptyDir the StatefulSet mounts. A custom config that adds
+  # a stats socket or chroot must add its own writable mount via extraVolumes.
+  podSecurityContext:
+    fsGroup: 1000
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    privileged: false
+    readOnlyRootFilesystem: true
+    runAsGroup: 1000
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
   tolerations: []
 
 # ------------------------------------------------------------------------------
