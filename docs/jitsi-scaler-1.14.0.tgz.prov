@@ -1,0 +1,92 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/category: streaming-messaging
+  artifacthub.io/links: |
+    - name: Jitsi-Scaler GitHub
+      url: https://github.com/jitsi-contrib/jitsi-scaler
+    - name: Jitsi Meet
+      url: https://jitsi.org/jitsi-meet/
+    - name: Jitsi Meet Documentation
+      url: https://jitsi.github.io/handbook/docs/intro/
+    - name: Jitsi-Helm GitHub
+      url: https://github.com/jitsi-contrib/jitsi-helm
+apiVersion: v2
+appVersion: 3.7.0
+dependencies:
+- - alias: shard0
+  condition: shard0.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard1
+  condition: shard1.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard2
+  condition: shard2.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard3
+  condition: shard3.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard4
+  condition: shard4.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard5
+  condition: shard5.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard6
+  condition: shard6.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard7
+  condition: shard7.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard8
+  condition: shard8.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+- - alias: shard9
+  condition: shard9.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.7.0
+description: Horizontal scaling and high availability for Jitsi Meet
+icon: https://jitsi-contrib.github.io/jitsi-helm/jitsi-meet.png
+name: jitsi-scaler
+type: application
+version: 1.14.0
+
+...
+files:
+  jitsi-scaler-1.14.0.tgz: sha256:973c842a6ea726e1e136cd0151f0a417bc4af35cb61b127143f93feafc7ecf7f
+-----BEGIN PGP SIGNATURE-----
+
+wsFcBAEBCgAQBQJqqAhOCRCMkGqlTqyzCgAA51UQANN7gk6BXAHVanrCp1v+6mNb
+Re+RpTLJQnagftdbBv/WnOvb5OSvmDrcFyk5rkTfTROKy7ZTiGCAzpm9w68eyYQZ
+A1VITKbVDzdb7b0MZocPvISg84C41p7K9XdqCdhCaN2+1DbIb/CqbrfzTgDOQGoz
+i4wVK5J2eHO/mwSLu1RHPrYCegRV7H4aC3WHTAyVPBycA90kyQ4GqR/PiobGdnMB
+CfOhoPXzcU47DIZBnPKt6UgzH9eKxVwppK03LyZs1sPGeutYzIzzSxcPo7/9P0PH
+pkAC9LxsLe7HC3bmWdw9G3qZULwhfoXtxCkNP6lE++k+DQnIoEZ4a6EoHkyngbah
+765mqadUHC/rODHYcrpg7hQ1lZ2Pzk8q+JeKpqjS3PKecPASLDVIZuKIeODdYmp0
+K7d+Fp5FhAApYYDMK/7OIWT9q/HP6c6mkWrdMiKaC6zFI68rryr6fhNR3hEFR4ZB
+QlJAFTnCi9waoRjWUMDQ0qkWiOl6sqeOUvvhQ1Ra+WpCAQHjdek2P/BBNy79W2Kl
+skxBOcT0ypgMW21WrEYL2kjdhvUbBx/e8UYgZtI6mhycEIGshitYHPUcj6ny8Q6f
+rI/CQTCPhBeau2pck62OiJOzPUK4n1nmip8etqFuaNwyGDUSZnDZImA9y1zV9P0V
+G1PXx2a9loXmU3NTpmSi
+=iLjb
+-----END PGP SIGNATURE-----
