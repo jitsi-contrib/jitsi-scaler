@@ -41,7 +41,7 @@ haproxy:
 
   backend:
     # If you update the Jitsi web port, update this port accordingly.
-    port: 80
+    port: 8000
 
   gateway:
     enabled: false
