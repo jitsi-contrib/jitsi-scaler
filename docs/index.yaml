@@ -13,6 +13,79 @@ entries:
         - name: Jitsi-Helm GitHub
           url: https://github.com/jitsi-contrib/jitsi-helm
     apiVersion: v2
+    appVersion: 3.11.0
+    created: "2026-10-23T13:07:06.062775627+03:00"
+    dependencies:
+    - alias: shard0
+      condition: shard0.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard1
+      condition: shard1.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard2
+      condition: shard2.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard3
+      condition: shard3.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard4
+      condition: shard4.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard5
+      condition: shard5.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard6
+      condition: shard6.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard7
+      condition: shard7.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard8
+      condition: shard8.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    - alias: shard9
+      condition: shard9.enabled
+      name: jitsi-meet
+      repository: oci://ghcr.io/jitsi-contrib
+      version: 3.11.0
+    description: Horizontal scaling and high availability for Jitsi Meet
+    digest: c76fec29e6f3070920b89b055560d8dac094b140b8ffb679854c97c100aaf654
+    icon: https://jitsi-contrib.github.io/jitsi-helm/jitsi-meet.png
+    name: jitsi-scaler
+    type: application
+    urls:
+    - https://jitsi-contrib.github.io/jitsi-scaler/jitsi-scaler-1.15.0.tgz
+    version: 1.15.0
+  - annotations:
+      artifacthub.io/category: streaming-messaging
+      artifacthub.io/links: |
+        - name: Jitsi-Scaler GitHub
+          url: https://github.com/jitsi-contrib/jitsi-scaler
+        - name: Jitsi Meet
+          url: https://jitsi.org/jitsi-meet/
+        - name: Jitsi Meet Documentation
+          url: https://jitsi.github.io/handbook/docs/intro/
+        - name: Jitsi-Helm GitHub
+          url: https://github.com/jitsi-contrib/jitsi-helm
+    apiVersion: v2
     appVersion: 3.8.0
     created: "2026-09-16T16:21:12.537399494+03:00"
     dependencies:
@@ -1315,4 +1388,4 @@ entries:
     urls:
     - https://jitsi-contrib.github.io/jitsi-scaler/jitsi-scaler-1.0.0.tgz
     version: 1.0.0
-generated: "2026-09-16T16:21:12.496121549+03:00"
+generated: "2026-10-23T13:07:06.017812308+03:00"

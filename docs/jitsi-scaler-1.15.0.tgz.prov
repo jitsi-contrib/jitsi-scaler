@@ -13,58 +13,58 @@ annotations:
     - name: Jitsi-Helm GitHub
       url: https://github.com/jitsi-contrib/jitsi-helm
 apiVersion: v2
-appVersion: 3.8.0
+appVersion: 3.11.0
 dependencies:
 - - alias: shard0
   condition: shard0.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard1
   condition: shard1.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard2
   condition: shard2.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard3
   condition: shard3.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard4
   condition: shard4.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard5
   condition: shard5.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard6
   condition: shard6.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard7
   condition: shard7.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard8
   condition: shard8.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 - - alias: shard9
   condition: shard9.enabled
   name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.8.0
+  version: 3.11.0
 description: Horizontal scaling and high availability for Jitsi Meet
 icon: https://jitsi-contrib.github.io/jitsi-helm/jitsi-meet.png
 name: jitsi-scaler
@@ -73,20 +73,20 @@ version: 1.15.0
 
 ...
 files:
-  jitsi-scaler-1.15.0.tgz: sha256:bc24dfefa4c6c96e94cdc7cab086ad8cccd63d56130298cfbe7ca68c94decfe0
+  jitsi-scaler-1.15.0.tgz: sha256:c76fec29e6f3070920b89b055560d8dac094b140b8ffb679854c97c100aaf654
 -----BEGIN PGP SIGNATURE-----
 
-wsFcBAEBCgAQBQJqqpexCRCMkGqlTqyzCgAA/mMQAMsBaKo1v2rjohh6TZDC6qPi
-dhbM1kb4RwA7NvOfrSS3N2cSNeCNGidpM7SA+m4mZq+tx+hQpiY/a8aYIlr5fgEr
-fF4WAQnUKaJidRV6qshHKKPL7xinIml0zKETEghS2T9gyIHFPIHLa+tfMV3MD00q
-gq7/f0OJE3/GKxs+V9/mL4yLi5o/Cv8FNsuUsRzvWGGPNNEn4HWFBQ/Vsc4JG7aG
-ztkreQOphuAPHDRW2uBkBD5ecRUv5dfolS1ba3yF2lzb12cQ7//IN2w3xtHiJyvR
-ouY0kuQPnERxiOsk2gZStLiBnI+e3EgLlgSIXmRe2O+jCncHO/OKYNXWrixRh1Mc
-pZ+ZVN8V4CSk0+YIPbBKZwkcTajs0mfLWqd+UKORgZAtYsyGEZQkvEZTRFqQR8wO
-tVgMIu5GAKK4HTIDN19fkj3M4vqAp7309BdI3UkkpG36QOl8RE40iLBhkyfZTp9R
-EIaRoSdSyL4fVMgbg9QT12sfVqNR7Ze6FMvkah9S+d41zans2Au6H9d0Dh/fEhxF
-Ki2aV6XNRn16TZuwY3/W4GCKbzvzn98+lqeMdE46BEokdqbWL/OPMm44x89E78nH
-wTcw7vGWhWKZ9kot4oLCsmrMQPpkRA7+yRsfnlvJNvYmXbtsRU5VOz6Ba+8mKMeF
-tNoXd7Tlh9TI0TtbKfyk
-=yJh8
+wsFcBAEBCgAQBQJq2zG0CRCMkGqlTqyzCgAADN0QAA0cpSeSZJ/4dogN22sB88BF
+yN0h8gb2bzJlOxfvPtqd4dDE6cww7F9ltGyg6nxzH71Pho0ghCNVlHZXRsMfaveB
+LYO142oXKjS3gf1x+RbZPjJyCJmQ5KItrUXK3jrOIciSFkhesdympP5xSaiDyLa3
+OELRyI8lMIAlIRiTi36LEMlEh5i8OOXny4d22ltrr0rSBt1TwuCJCyCi8Nfwp2RA
+37wOjU1rLB8lJ3b52n15QYVH+Th06BleHfzKbjid/x19z7omtfTimlMqPqYDHPFe
+2cDnqa4BuiJzdWBBTUQ7Nyn4zMJB/66c9is/eS9ADRcy9pDsSzGOU7UDmMjbydqB
+uNQP/tpJvZAwq6rGNqbxg3HIL3UMafCUPrOiuT2rDhpWrlLORuezPyBkIVDqjPC4
+ADudPas8bxXO9qoO+A6W5f49ZgkwNkqBtRppcfYE28OFCwGMBIWgSPUWb+k7Q0lQ
+93jO02xforiIo4rH4tmEIuP39I5MYZdCQNd7XSxHTJa0U/u652kXhC6sHf1c9sna
+Y2/ukdDBiBxxd16qPi0iuukqG/48nCDwjPuJsYfbfFZNLHwGHhIlNPwrfZOCCrdH
+8QG43I9CU3G+nI+AlJFXbmSksy2UfZiBuj1xoM62D4E7R1ivHR92dQdeIWOFB079
+eoG4davk+EJ+erT7oELd
+=1aPU
 -----END PGP SIGNATURE-----
