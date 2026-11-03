@@ -1,0 +1,92 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/category: streaming-messaging
+  artifacthub.io/links: |
+    - name: Jitsi-Scaler GitHub
+      url: https://github.com/jitsi-contrib/jitsi-scaler
+    - name: Jitsi Meet
+      url: https://jitsi.org/jitsi-meet/
+    - name: Jitsi Meet Documentation
+      url: https://jitsi.github.io/handbook/docs/intro/
+    - name: Jitsi-Helm GitHub
+      url: https://github.com/jitsi-contrib/jitsi-helm
+apiVersion: v2
+appVersion: 3.12.0
+dependencies:
+- - alias: shard0
+  condition: shard0.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard1
+  condition: shard1.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard2
+  condition: shard2.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard3
+  condition: shard3.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard4
+  condition: shard4.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard5
+  condition: shard5.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard6
+  condition: shard6.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard7
+  condition: shard7.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard8
+  condition: shard8.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+- - alias: shard9
+  condition: shard9.enabled
+  name: jitsi-meet
+  repository: oci://ghcr.io/jitsi-contrib
+  version: 3.12.0
+description: Horizontal scaling and high availability for Jitsi Meet
+icon: https://jitsi-contrib.github.io/jitsi-helm/jitsi-meet.png
+name: jitsi-scaler
+type: application
+version: 1.17.0
+
+...
+files:
+  jitsi-scaler-1.17.0.tgz: sha256:19515e151be892f5f8b0e289bbc798abea769f5f8d124abd593e53b16dd25cfa
+-----BEGIN PGP SIGNATURE-----
+
+wsFcBAEBCgAQBQJq6bWSCRCMkGqlTqyzCgAAL40QABIBz2Ibi086AJ5IddSG+LFo
+1FrFM1Pv3ZPD6BOYSEQjRBBri8Hs5FebJkEcUlfHi4csxMY1g1xMBJKanMrRTsXF
+1cA8Qa0ywrhPtuBh/dAq9NRuifO21/hoTjLWwRQrnEvmpR0TAtYjFiH8x5Tgvd/m
+Kvkt9u5WJN6S1N5nb/tBXvG3ZIbe4W7Dova0ut7GbUDh0YUwNaw+siKTf4EMQXOO
+kJjOEZPk26yi09e0d8gmgy5sApY8cmm/DqUg0eQVdfcDkOuQ2aO3mJ9aFLeSSBGb
+3xusSVklLodlqUj20xujcq9cujgjZuF9YZZK2qpip+zN2m7+X2xRf4UlpJ3r0tmD
+MFmrgvZjCI8pxyQh4Jz7NXouFFxav6nIro+j3qxsSFtviLJdsTFi3BCCXT8O+SBs
+ySda8Qb7JwExpKh0a8YPWf9yABItlPq5hcD+qhfuwOeuDvEaqxpY54pcSUJyprJ7
+4LP9Yx3oqE63SgHFafGFSlMOCdSl8W+U377VdHn+9TLdfaWpH/j80eznK5ZR+eFc
+b3CVsY4Clhd5KpcnnOFsBagKG90IuBRYfxLsaVC0dKuS7KMimnY5nyv2rih9ngLH
+p3MIm1HtniTkc0xQ9VvoxU4QPi/L0yRnwCOxYokSZ41/4/ugkPK/Njupw0fKaRqT
+ucgd0P73nuFdEbOvGM3a
+=5oyF
+-----END PGP SIGNATURE-----
