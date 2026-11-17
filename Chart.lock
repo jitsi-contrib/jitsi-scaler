@@ -1,33 +1,33 @@
 dependencies:
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
+  version: 3.13.0
 - name: jitsi-meet
   repository: oci://ghcr.io/jitsi-contrib
-  version: 3.12.0
-digest: sha256:d594a9c4663a893315ed21494ff7c9ee58b9489a8c162a3319a49b9cd21e1893
-generated: "2026-11-03T13:20:34.983432209+03:00"
+  version: 3.13.0
+digest: sha256:a5e6aa74d30c3a114ea0e1198960284707ac342f0341ba553959da836afb77c6
+generated: "2026-11-17T13:45:02.871217124+03:00"
